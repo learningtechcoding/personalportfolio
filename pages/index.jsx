@@ -23,7 +23,7 @@ const Home = () => {
           >
             {/* Transforming Ideas <br /> Into{" "}
             <span className="text-accent">Digital Reality</span> */}
-            Hi, I'm <span className="text-accent">Aamir Sohail</span> <br />
+            Hi I am <span className="text-accent">Aamir Sohail</span> <br />
             Building the Future <br />
             Of <span className="text-accent">Web Design</span>
           </motion.h1>
@@ -36,10 +36,10 @@ const Home = () => {
             exit="hidden"
             className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16"
           >
-            "I am a skilled web designer and developer with expertise in
+            I am a skilled web designer and developer with expertise in
             creating modern and user-friendly websites. I turn ideas into
             digital solutions using tools like React.js, Tailwind CSS, and
-            Laravel."
+            Laravel.
           </motion.p>
 
           {/* btn */}

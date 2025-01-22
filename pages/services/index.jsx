@@ -32,7 +32,7 @@ const Services = () => {
               exit="hidden"
               className="mb-4 lg:max-w-[400px] mx-auto lg:mx-0"
             >
-             "Explore our comprehensive range of services designed to meet all your web development and design needs. From creating custom, responsive websites to optimizing performance and building multilingual platforms, we deliver excellence at every step."
+             Explore our comprehensive range of services designed to meet all your web development and design needs. From creating custom, responsive websites to optimizing performance and building multilingual platforms, we deliver excellence at every step.
 
 
             </motion.p>
