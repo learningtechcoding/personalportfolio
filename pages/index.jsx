@@ -25,7 +25,7 @@ const Home = () => {
             <span className="text-accent">Digital Reality</span> */}
             Hi I am <span className="text-accent">Aamir Sohail</span> <br />
             Building the Future <br />
-            Of <span className="text-accent">Web Design</span>
+            Of <span className="text-accent">WebSite</span>
           </motion.h1>
 
           {/* subtitle */}
