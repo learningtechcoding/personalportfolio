@@ -61,14 +61,11 @@ export const aboutData = [
     title: "experience",
     info: [
       {
-        title: "Front End Developer + Team Lead (Alright Tech)",
-        stage: " Oct 2022 - Current",
+        title: "I have over 3 years of experience in designing and developing modern, responsive websites and web applications. My expertise includes React.js, Next.js, and Laravel, with a strong focus on clean code, performance, and user experience. I enjoy turning ideas into scalable digital solutions through continuous learning and creative problem-solving.",
+        stage: "",
       },
       
-      {
-        title: "Front End Developer (S1 Solutions)",
-        stage: "march 2022 - oct 2022",
-      },
+      
     ],
   },
   {
@@ -107,8 +104,8 @@ const About = () => {
             className="h2"
           >
 
-Crafting Digital  <span className="text-accent">Experiences</span>  with Expertise.
-
+            Transforming Ideas into Responsive <span className="text-accent">Web Experiences </span>
+ 
 
             
           </motion.h2>
@@ -118,9 +115,7 @@ Crafting Digital  <span className="text-accent">Experiences</span>  with Experti
             animate="show"
             className="max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0"
           >
-I’m a web designer and developer with expertise in creating seamless digital experiences. Using technologies like React.js, Laravel, and Tailwind CSS, I transform ideas into functional and visually appealing websites.
-
-
+ From concept to deployment, I handle the full development lifecycle—transforming ideas into fast, functional, and visually appealing digital products. I’m passionate about staying updated with industry trends, continuously improving my skills, and delivering high-quality solutions through creativity, collaboration, and attention to detail.
           </motion.p>
 
           {/* counters */}

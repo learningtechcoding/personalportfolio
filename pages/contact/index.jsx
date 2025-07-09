@@ -1,110 +1,144 @@
 import { motion } from "framer-motion";
-import { BsArrowRight } from "react-icons/bs";
-
+import { useRef, useState } from "react";
+import emailjs from "emailjs-com";
 import { fadeIn } from "../../variants";
-import { useState } from "react";
-import Link from "next/link";
+import { Toaster, toast } from "react-hot-toast";
+
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const form = useRef();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setIsLoading(true);
 
-    const myForm = event.target;
-    const formData = new FormData(myForm);
+    const formData = form.current;
+    const name = formData.name.value.trim();
+    const email = formData.email.value.trim();
+    const message = formData.message.value.trim();
 
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => alert("Thank you. I will get back to you ASAP."))
-      .catch((error) => console.log(error))
-      .finally(() => setIsLoading(false));
+    if (!name || !email || !message) {
+      toast.error("Please fill in all fields.");
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      // Send to Admin
+      await emailjs.send(
+        "service_79jm5nb",
+        "template_3ke9s64",
+        { name, email, message },
+        "RklqgDQ4zWUyacbw4"
+      );
+
+      // Send Confirmation to User
+      await emailjs.send(
+        "service_79jm5nb",
+        "template_n9hchmf",
+        { name, email },
+        "RklqgDQ4zWUyacbw4"
+      );
+
+      toast.success("Message sent successfully!");
+      form.current.reset();
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <div className="h-full bg-primary/30">
-      <div className="container mx-auto py-32 text-center xl:text-left flex items-center justify-center h-full">
-        {/* text & form */}
-        <div className="flex flex-col w-full max-w-[700px]">
-          {/* text */}
-          <motion.h2
-            variants={fadeIn("up", 0.2)}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-            className="h2 text-center mb-12"
-          >
-            Let &apos s <span className="text-accent">connect.</span>
-          </motion.h2>
+    <div className="h-full bg-primary/30 relative">
+      {/* Toast container */}
+      <Toaster position="top-right" reverseOrder={false} />
 
-          
-          <motion.form
-            variants={fadeIn("up", 0.4)}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-            className="flex-1 flex flex-col gap-6 w-full mx-auto"
+      <div className="container mx-auto py-32 h-full flex flex-col xl:flex-row items-center justify-center gap-12">
+        {/* Left: Contact Info */}
+        <motion.div
+          variants={fadeIn("up", 0.3)}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+          className="hidden xl:block flex-1 w-full max-w-[400px] space-y-8 text-center xl:text-left"
+        >
+          <h2 className="h2 mb-10">
+            Let&apos;s <span className="text-accent">connect.</span>
+          </h2>
+
+          <div>
+            <h3 className="text-xl font-semibold mb-2 text-white">Email</h3>
+            <p className="text-white/80 text-lg">aamirwebdev321@gmail.com</p>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold mb-2 text-white">Phone</h3>
+            <p className="text-white/80 text-lg">+92 323 7400856</p>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold mb-2 text-white">Location</h3>
+            <p className="text-white/80 text-lg">Islamabad, Pakistan</p>
+          </div>
+        </motion.div>
+
+        {/* Right: Contact Form */}
+        <motion.div
+          variants={fadeIn("up", 0.4)}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+          className="flex-1 w-full mt-32 md:mt-36   md:max-w-[600px]"
+        >
+          <form
+            ref={form}
             onSubmit={handleSubmit}
+            className="flex flex-col gap-6 pb-24"
             autoComplete="off"
-            autoCapitalize="off"
-          
-            data-netlify="true"
           >
-            {/* input group */}
 
-          
-         <div className="md:flex justify-center gap-x-6 w-full">
-         <Link href="/" className="text-accent mt-3 relative flex items-center group hover:text-accent transition-all duration-300">
-           
-        
-           <div className="flex">
-             <svg
-               stroke="currentColor"
-               fill="currentColor"
-               stroke-width="0"
-               viewBox="0 0 24 24"
-               aria-hidden="true"
-               height="2em"
-               width="2em"
-               xmlns="http://www.w3.org/2000/svg"
-             >
-               <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"></path>
-               <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"></path>
-             </svg>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              required
+              className="input bg-white/20 backdrop-blur-md placeholder:text-white/70"
+            />
 
-              <div  className="px-3  text-lg  text-sm ">aamirsohail78900789@gmail.com</div>
-           </div>
-           </Link>
-            <Link href="/" className="text-accent mt-3 relative flex items-center group hover:text-accent transition-all duration-300">
-        
-     
-           <div className="flex">
-           <svg
-  stroke="currentColor"
-  fill="currentColor"
-  stroke-width="0"
-  viewBox="0 0 24 24"
-  aria-hidden="true"
-  height="2em"
-  width="2em"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <rect x="6" y="2" width="12" height="20" rx="2" ry="2"></rect>
-  <circle cx="12" cy="19" r="1"></circle>
-</svg>
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+              className="input bg-white/20 backdrop-blur-md placeholder:text-white/70"
+            />
+</div>
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="Your Message"
+              required
+              className="textarea bg-white/20 backdrop-blur-md placeholder:text-white/70 resize-none"
+            ></textarea>
 
-
-              <div className="px-3  text-lg text-sm ">+923237400856</div>
-           </div>
-           </Link>
-         </div>
-             
-           
-          </motion.form>
-        </div>
+            <button
+              type="submit"
+              disabled={isLoading}
+              className={`btn btn-lg flex  bg-white/20 border border-transparent w-52 hover:bg-transparent hover:border-white/20   mx-auto rounded-lg items-center justify-center gap-2 ${
+                isLoading ? "opacity-70 cursor-not-allowed" : ""
+              }`}
+            >
+              {isLoading ? (
+                <span className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"></span>
+              ) : (
+                "Send Message"
+              )}
+            </button>
+          </form>
+        </motion.div>
       </div>
     </div>
   );
