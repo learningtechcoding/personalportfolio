@@ -41,7 +41,7 @@ const Home = () => {
       </div>
 
       {/* image and particles section */}
-      <div className="w-full h-full absolute right-0 bottom-0 overflow-hidden pointer-events-none">
+      <div className="w-full h-full absolute right-0 bottom-0 top-12 filter grayscale overflow-hidden pointer-events-none">
         {/* background image */}
         <div
           role="img"

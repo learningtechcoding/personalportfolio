@@ -10,6 +10,30 @@ import "swiper/css/pagination";
 
 const workSlides = {
   slides: [
+      {
+      images: [
+        {
+          title: "title",
+          path: "/work5.png",
+          link: "https://abbedsnorth.com/",
+        },
+        {
+          title: "title",
+          path: "/work6.png",
+          link: "https://seyyahmobile.com/",
+        },
+        {
+          title: "title",
+          path: "/work7.png",
+          link: "https://superb-basbousa-376643.netlify.app/",
+        },
+        {
+          title: "title",
+          path: "/work8.png",
+          link: "https://shopthewaffle.com/",
+        },
+      ],
+    },
     {
       images: [
         {
@@ -34,30 +58,32 @@ const workSlides = {
         },
       ],
     },
+  
     {
       images: [
         {
           title: "title",
-          path: "/work5.png",
-          link: "https://www.potololite.com/",
+          path: "/work9.png",
+          link: "http://wigglethatbag.com/",
         },
         {
           title: "title",
-          path: "/work6.png",
-          link: "https://seyyahmobile.com/",
+          path: "/work10.png",
+          link: "https://totemecrazy.com/",
         },
         {
           title: "title",
-          path: "/work7.png",
-          link: "https://superb-basbousa-376643.netlify.app/",
+          path: "/work11.png",
+          link: "https://healthfithustlers.com/",
         },
         {
           title: "title",
-          path: "/thumb3.jpg",
-          link: "http://example.com",
+          path: "/work12.png",
+          link: "https://relaxed-concha-2eb578.netlify.app/",
         },
       ],
     },
+  
   ],
 };
 
